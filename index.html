@@ -18,50 +18,50 @@
       opacity: 0.5;
       z-index: -1;
     }
-    .title-2_5x {
-      font-size: 10rem; /* 2.5x text-7xl (~4rem) */
-      line-height: 1;
-    }
   </style>
 </head>
 <body class="relative background-overlay min-h-screen flex flex-col items-center justify-start py-12 bg-green-100">
 
-  <!-- Logo and Title container aligned with the first book -->
-  <div class="flex items-center space-x-8 mb-6" style="margin-left: 2rem;"> <!-- Adjust margin as needed -->
-    <img src="FolkRavenLogo.png" alt="FolkRaven Logo" class="h-60 drop-shadow-md" />
-    <h1 class="title-2_5x text-yellow-800 drop-shadow-lg font-bold">FolkRaven</h1>
+  <!-- Centered Logo + Title Block -->
+  <div class="w-full flex justify-center mb-6 sm:mb-12 px-4">
+    <div class="flex flex-col sm:flex-row items-center sm:space-x-6">
+      <img src="FolkRavenLogo.png" alt="FolkRaven Logo" class="h-32 sm:h-40 lg:h-48 drop-shadow-md" />
+      <h1 class="text-7xl sm:text-8xl lg:text-9xl text-yellow-800 drop-shadow-lg font-bold">
+        FolkRaven
+      </h1>
+    </div>
   </div>
 
   <!-- Book Grid -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mt-6">
-    <!-- First book (landscape) -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mt-6 px-4">
+    <!-- Landscape books (top row) -->
     <div class="bg-white bg-opacity-80 border-4 border-yellow-300 rounded-xl h-64 flex items-center justify-center">
-      <img src="book1.png" alt="Book 1" class="h-full w-full object-fill rounded-md"/>
+      <img src="book1.png" alt="Book 1" class="h-full w-full object-contain rounded-md"/>
     </div>
-    <!-- Second book (landscape) -->
     <div class="bg-white bg-opacity-80 border-4 border-yellow-300 rounded-xl h-64 flex items-center justify-center">
-      <img src="book2.png" alt="Book 2" class="h-full w-full object-fill rounded-md"/>
+      <img src="book2.png" alt="Book 2" class="h-full w-full object-contain rounded-md"/>
     </div>
-    <!-- Third book (landscape) -->
     <div class="bg-white bg-opacity-80 border-4 border-yellow-300 rounded-xl h-64 flex items-center justify-center">
-      <img src="book3.png" alt="Book 3" class="h-full w-full object-fill rounded-md"/>
+      <img src="book3.png" alt="Book 3" class="h-full w-full object-contain rounded-md"/>
     </div>
-    <!-- Fourth book (portrait) -->
+
+    <!-- Portrait books (bottom row) -->
     <div class="bg-white bg-opacity-80 border-4 border-yellow-300 rounded-xl h-96 flex items-center justify-center">
-      <img src="book4.png" alt="Book 4" class="h-full w-full object-fill rounded-md"/>
+      <img src="book4.png" alt="Book 4" class="h-full w-full object-contain rounded-md"/>
     </div>
-    <!-- Fifth book (portrait) -->
     <div class="bg-white bg-opacity-80 border-4 border-yellow-300 rounded-xl h-96 flex items-center justify-center">
-      <img src="book5.png" alt="Book 5" class="h-full w-full object-fill rounded-md"/>
+      <img src="book5.png" alt="Book 5" class="h-full w-full object-contain rounded-md"/>
     </div>
-    <!-- Sixth book (portrait) -->
     <div class="bg-white bg-opacity-80 border-4 border-yellow-300 rounded-xl h-96 flex items-center justify-center">
-      <img src="book6.png" alt="Book 6" class="h-full w-full object-fill rounded-md"/>
+      <img src="book6.png" alt="Book 6" class="h-full w-full object-contain rounded-md"/>
     </div>
   </div>
 
 </body>
 </html>
+
+
+
 
 
 
