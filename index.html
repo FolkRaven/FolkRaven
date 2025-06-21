@@ -65,11 +65,44 @@
         .animate-pulse.delay-150 {
             animation-delay: 0.150s;
         }
+
+        /* --- SIMPLIFIED CSS for the Raven GIF positioning --- */
+        .folkraven-title-container {
+            position: relative; /* Essential for absolute positioning of children */
+            display: inline-block; /* So it wraps content and allows accurate width calculation */
+            width: fit-content; 
+            /* Uncomment the line below temporarily during debugging to see its boundaries */
+            /* background-color: rgba(255, 0, 0, 0.1); */ 
+        }
+
+        .raven-flying {
+            position: absolute;
+            width: 200px; /* This is your fixed size */
+            height: auto; /* Maintain aspect ratio */
+            
+            /* Assuming you've already found the fixed 'top', 'right', and 'transform' values
+               that work for all screen sizes. ADJUST THESE IF NECESSARY. */
+            top: -100px; 
+            right: -50px; 
+            transform: translateX(10%); 
+
+            z-index: 10; 
+            pointer-events: none; 
+            
+            /* Optional animation for the GIF */
+            /* @keyframes float {
+                0%, 100% { transform: translateY(0) translateX(0); }
+                50% { transform: translateY(-5px) translateX(5px); }
+            }
+            animation: float 4s infinite ease-in-out; */
+        }
+        /* --- END SIMPLIFIED CSS --- */
+
     </style>
 </head>
-<body class="relative background-overlay min-h-screen flex flex-col items-center justify-start py-12 bg-green-100">
+<body class="relative background-overlay min-h-screen flex flex-col items-center justify-start py-8 sm:py-12 lg:py-16 xl:py-20 bg-green-100">
 
-    <div class="absolute top-6 right-6 flex space-x-4 z-10">
+    <div class="absolute top-6 left-6 flex space-x-4 z-10">
         <a
           href="mailto:info@folkraven.com"
           aria-label="Email FolkRaven"
@@ -92,10 +125,11 @@
     <div class="w-full flex justify-center mb-6 sm:mb-12 px-4 text-center">
         <div class="flex flex-col sm:flex-row items-center sm:space-x-6">
             <img src="FolkRavenLogo.webp" alt="FolkRaven Logo" class="h-32 sm:h-40 lg:h-48 drop-shadow-md animate-bounce-slight" />
-            <div>
+            <div class="folkraven-title-container"> 
                 <h1 class="text-7xl sm:text-8xl lg:text-9xl text-yellow-800 drop-shadow-lg font-bold">
                     FolkRaven
                 </h1>
+                <img src="raven-flying.gif" alt="Animated Flying Raven" class="raven-flying" />
                 <p class="text-2xl sm:text-3xl text-yellow-900 mt-2 font-semibold drop-shadow-sm">
                     Children's Educational & Activity Book Makers
                 </p>
