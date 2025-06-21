@@ -1,71 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FolkRaven - Legal</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
-    .background-overlay::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url('FolkRaven.webp') center/cover no-repeat;
-      opacity: 0.5;
-      z-index: -1;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>FolkRaven - Legal Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif; /* Default to Poppins for readability */
+        }
+        .background-overlay::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url('FolkRaven.webp') center/cover no-repeat;
+            opacity: 0.5;
+            z-index: -1;
+        }
+        .font-poppins { /* Explicitly apply Poppins where needed, though it's default */
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Consistent prose styling for paragraphs, similar to other pages */
+        .prose p + p {
+            margin-top: 1em; /* Adds space between paragraphs for readability */
+        }
+        .prose strong {
+            font-weight: 600; /* Ensuring strong tags are prominent within prose */
+        }
+    </style>
 </head>
 <body class="relative background-overlay min-h-screen flex flex-col items-center justify-start py-12 bg-green-100">
 
-  <div class="w-full max-w-3xl px-4 mt-8 text-left text-block bg-white bg-opacity-80 p-6 rounded-lg shadow-lg">
-    <h2 class="text-2xl font-semibold mb-4">Terms of Service</h2>
-    <div class="text-gray-800 leading-relaxed">
-      <p><strong>1. Acceptance of Terms</strong><br>
-      By accessing and using the FolkRaven Books website, you agree to comply with and be bound by these Terms of Service. If you do not agree with any part of these terms, please do not use our website.</p>
-
-      <p><br><strong>2. Use of Content</strong><br>
-      All content on this website, including text, images, and logos, is the property of FolkRaven Books and is protected by copyright laws. You may not reproduce, distribute, or modify any content without our express written permission.</p>
-
-      <p><br><strong>3. Educational Purpose</strong><br>
-      The educational content provided on this website and in our books is for informational and educational purposes only. It is not intended as a substitute for professional educational advice.</p>
-
-      <p><br><strong>4. Limitation of Liability</strong><br>
-      FolkRaven Books shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of this website or our products.</p>
-
-      <p><br><strong>5. Changes to Terms</strong><br>
-      We reserve the right to modify these Terms of Service at any time. Any changes will be posted on this page, and your continued use of the website constitutes acceptance of those changes.</p>
+    <div class="absolute top-6 left-6 z-10">
+        <a href="index.html" 
+           aria-label="Back to Home"
+           class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white flex items-center justify-center">
+            <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+        </a>
     </div>
 
-    <h2 class="text-2xl font-semibold mt-8 mb-4">Privacy Policy</h2>
-    <div class="text-gray-800 leading-relaxed">
-      <p><strong>1. Information Collection</strong><br>
-      We may collect personal information, such as your name and email address, when you subscribe to our newsletter or contact us through our website. We also collect non-personal information, such as website usage data, through cookies and analytics tools.</p>
+    <div class="w-full max-w-4xl px-4 mt-8 mb-12">
+        <div class="bg-white/90 backdrop-blur-sm shadow-2xl border-2 border-yellow-600/30 hover:border-yellow-600/50 transition-all duration-300 p-8 lg:p-12 rounded-xl text-left">
+            
+            <h1 class="font-poppins text-4xl lg:text-5xl text-yellow-800 mb-8 text-center font-bold drop-shadow-lg">
+                Legal Information
+            </h1>
 
-      <p><br><strong>2. Use of Information</strong><br>
-      We use your personal information to communicate with you, provide updates, and improve our services. We do not sell or share your information with third parties unless required by law.</p>
+            <h2 class="font-poppins text-3xl lg:text-4xl text-yellow-800 mb-4 font-semibold drop-shadow-sm">
+                Terms of Service
+            </h2>
+            <div class="prose max-w-none text-gray-800 leading-relaxed font-poppins text-lg">
+                <p>
+                    <strong>1. Acceptance of Terms</strong><br>
+                    By accessing and using the FolkRaven Books website, you agree to comply with and be bound by these Terms of Service. If you do not agree with any part of these terms, please do not use our website.
+                </p>
 
-      <p><br><strong>3. Data Security</strong><br>
-      We take reasonable measures to protect your personal information from unauthorized access, use, or disclosure.</p>
+                <p>
+                    <strong>2. Use of Content</strong><br>
+                    All content on this website, including text, images, and logos, is the property of FolkRaven Books and is protected by copyright laws. You may not reproduce, distribute, or modify any content without our express written permission.
+                </p>
 
-      <p><br><strong>4. Cookies</strong><br>
-      Our website uses cookies to enhance your browsing experience. You can control cookies through your browser settings.</p>
+                <p>
+                    <strong>3. Educational Purpose</strong><br>
+                    The educational content provided on this website and in our books is for informational and educational purposes only. It is not intended as a substitute for professional educational advice.
+                </p>
 
-      <p><br><strong>5. Children's Privacy</strong><br>
-      Our products and services are intended for children. We do not knowingly collect personal information from children under the age of 13 without parental consent. If we become aware that we have collected such information, we will take steps to delete it.</p>
+                <p>
+                    <strong>4. Limitation of Liability</strong><br>
+                    FolkRaven Books shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of this website or our products.
+                </p>
 
-      <p><br><strong>6. Changes to Privacy Policy</strong><br>
-      We may update this Privacy Policy from time to time. Any changes will be posted on this page.</p>
+                <p>
+                    <strong>5. Changes to Terms</strong><br>
+                    We reserve the right to modify these Terms of Service at any time. Any changes will be posted on this page, and your continued use of the website constitutes acceptance of those changes.
+                </p>
+            </div>
 
-      <p><br><strong>7. Contact Us</strong><br>
-      If you have any questions about our Terms of Service or Privacy Policy, please contact us at <a href="mailto:info@folkraven.com">info@folkraven.com</a>.</p>
+            <h2 class="font-poppins text-3xl lg:text-4xl text-yellow-800 mt-10 mb-4 font-semibold drop-shadow-sm">
+                Privacy Policy
+            </h2>
+            <div class="prose max-w-none text-gray-800 leading-relaxed font-poppins text-lg">
+                <p>
+                    <strong>1. Information Collection</strong><br>
+                    We may collect personal information, such as your name and email address, when you subscribe to our newsletter or contact us through our website. We also collect non-personal information, such as website usage data, through cookies and analytics tools.
+                </p>
+
+                <p>
+                    <strong>2. Use of Information</strong><br>
+                    We use your personal information to communicate with you, provide updates, and improve our services. We do not sell or share your information with third parties unless required by law.
+                </p>
+
+                <p>
+                    <strong>3. Data Security</strong><br>
+                    We take reasonable measures to protect your personal information from unauthorized access, use, or disclosure.
+                </p>
+
+                <p>
+                    <strong>4. Cookies</strong><br>
+                    Our website uses cookies to enhance your Browse experience. You can control cookies through your browser settings.
+                </p>
+
+                <p>
+                    <strong>5. Children's Privacy</strong><br>
+                    Our products and services are intended for children. We do not knowingly collect personal information from children under the age of 13 without parental consent. If we become aware that we have collected such information, we will take steps to delete it.
+                </p>
+
+                <p>
+                    <strong>6. Changes to Privacy Policy</strong><br>
+                    We may update this Privacy Policy from time to time. Any changes will be posted on this page.
+                </p>
+
+                <p>
+                    <strong>7. Contact Us</strong><br>
+                    If you have any questions about our Terms of Service or Privacy Policy, please contact us at <a href="mailto:info@folkraven.com" class="text-yellow-700 hover:text-yellow-800 underline">info@folkraven.com</a>.
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
 
 </body>
 </html>
