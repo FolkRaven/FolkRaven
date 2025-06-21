@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Book 1 - FolkRaven</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Book 2 - FolkRaven</title> <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -103,8 +102,7 @@
     </div>
     <div class="w-full max-w-6xl px-4 mt-6 text-center">
         <div class="relative inline-block border-4 border-yellow-800 rounded-xl shadow-lg">
-            <img id="page-display" src="book1.webp" alt="Book Page 1" class="h-64 sm:h-96 w-auto mx-auto object-fill rounded-md"/>
-            <button onclick="prevPage()" class="absolute left-4 bottom-4 p-3 bg-white/70 hover:bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200" style="font-size: 1.5em; line-height: 1;"><span class="text-yellow-800">&#8249;</span></button>
+            <img id="page-display" src="book2.webp" alt="Doctor Penny Book Cover" class="h-64 sm:h-96 w-auto mx-auto object-fill rounded-md"/> <button onclick="prevPage()" class="absolute left-4 bottom-4 p-3 bg-white/70 hover:bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200" style="font-size: 1.5em; line-height: 1;"><span class="text-yellow-800">&#8249;</span></button>
             <button onclick="nextPage()" class="absolute right-4 bottom-4 p-3 bg-white/70 hover:bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200" style="font-size: 1.5em; line-height: 1;"><span class="text-yellow-800">&#8250;</span></button>
         </div>
         <p class="mt-4 text-gray-700 font-poppins">Use the buttons to flip through sample pages of the book.</p>
@@ -114,17 +112,15 @@
       <div class="bg-white/90 backdrop-blur-sm shadow-2xl border-2 border-yellow-600/30 hover:border-yellow-600/50 transition-all duration-300 p-8 lg:p-12 rounded-xl">
         <div class="text-center space-y-6">
           <h2 class="font-christmas text-4xl lg:text-5xl text-yellow-800 mb-6 drop-shadow-lg">
-            About This Book
-          </h2>
-          <div class="prose max-w-none">
+            About Doctor Penny
+          </h2> <div class="prose max-w-none">
             <p class="text-xl lg:text-2xl text-gray-800 leading-relaxed font-poppins">
-              Embark on a delightful counting adventure! This enchanting book is designed to introduce young minds to numbers in a fun and engaging way.
+              Join Doctor Penny on her exciting adventures as she helps her friends in the forest! This heartwarming story teaches children about empathy, problem-solving, and the joy of helping others.
             </p>
             <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mt-4 font-poppins">
-              Through vibrant illustrations and captivating stories, children will learn to count while exploring a world filled with wonder and imagination.
+              With beautiful illustrations and gentle lessons, 'Doctor Penny' is perfect for encouraging kindness and curiosity in young readers.
             </p>
-          </div>
-          <div class="flex justify-center space-x-2 mt-8">
+          </div> <div class="flex justify-center space-x-2 mt-8">
             <div class="w-3 h-3 bg-yellow-600 rounded-full animate-pulse"></div>
             <div class="w-3 h-3 bg-yellow-500 rounded-full animate-pulse delay-75"></div>
             <div class="w-3 h-3 bg-yellow-400 rounded-full animate-pulse delay-150"></div>
@@ -134,17 +130,18 @@
     </section>
     <script>
         let currentPage = 1; // Start with the cover image as page 1
-        const totalPages = 5; // Adjust this number based on your actual pages (e.g., 4 interior pages + 1 cover = 5)
+        // >>> IMPORTANT: Adjust 'totalPages' based on your actual images for Book 2 <<<
+        const totalPages = 5; // Example: book2.webp, book2-page1.webp, book2-page2.webp, book2-page3.webp, book2-page4.webp
 
         function updatePage() {
             const pageDisplay = document.getElementById('page-display');
             let imgSource;
 
             if (currentPage === 1) {
-                imgSource = "book1.webp"; // Cover image
+                imgSource = "book2.webp"; // Cover image for Book 2
             } else {
-                // Interior pages are book1-page1.webp, book1-page2.webp, etc.
-                imgSource = `book1-page${currentPage - 1}.webp`;
+                // Interior pages are book2-page1.webp, book2-page2.webp, etc.
+                imgSource = `book2-page${currentPage - 1}.webp`;
             }
 
             const img = new Image();
