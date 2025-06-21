@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: 'Mountains of Christmas', cursive;
-            padding-top: 120px; /* Crucial for content to clear the fixed header */
+            padding-top: 80px; /* Adjusted for consistent header height */
         }
         .background-overlay::before {
             content: "";
@@ -56,17 +56,44 @@
             margin-top: 1em;
         }
 
-        /* Specific styling for the fixed header container */
+        /* --- START: Header Button Visibility CSS (Copied from index.html) --- */
         .header-social-container {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 50;
-            background-color: rgba(255, 255, 255, 0.5); /* Current opacity */
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* The container itself is ALWAYS transparent and has no shadow/blur */
+            background-color: transparent;
+            backdrop-filter: none;
+            box-shadow: none;
         }
+
+        /* Styles for the social buttons (.group elements) */
+        .header-social-container .group {
+            background-color: rgba(255, 255, 255, 0.8); /* Default visible background */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Default visible shadow */
+            opacity: 1; /* Default visible opacity */
+            visibility: visible; /* Default visible state */
+            pointer-events: auto; /* Default interactive state */
+            /* Add transition for smooth hide/show */
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
+                        background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        /* Class to hide the buttons when scrolled down */
+        .header-social-container.hide-buttons .group {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none; /* Disable clicks when hidden */
+        }
+
+        /* Ensure icon color transition is smooth */
+        .header-social-container .group svg,
+        .header-social-container .group i {
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        /* --- END: Header Button Visibility CSS --- */
     </style>
 </head>
 <body class="relative background-overlay min-h-screen flex flex-col items-center justify-start bg-green-100">
@@ -76,7 +103,7 @@
             <a
                 href="index.html"
                 aria-label="Back to Books"
-                class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
                 title="Back to Books"
             >
                 <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -85,55 +112,28 @@
             </a>
             <a
                 href="mailto:info@folkraven.com"
-                aria-label="Email FolkRaven"
-                class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white"
-                title="Email Us" 
+                aria-label="Email FolkRaven Books"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
+                title="Email Us"
             >
                 <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
             </a>
-            <a
-                href="https://www.facebook.com/people/FolkRaven-Books/61573725687516/?mibextid=wwXIfr&rdid=IZCPSfctv60sBKGX&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NaUynKsG3%2F%3Fmibextid%3DwwXIfr"
-                target="_blank"
-                aria-label="Visit FolkRaven on Facebook"
-                class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white"
-                title="Visit Our Facebook Page" 
-            >
-                <i class="fab fa-facebook-f w-6 h-6 text-blue-600 group-hover:text-blue-700 group-hover:scale-110 transition-transform flex items-center justify-center"></i>
-            </a>
+            </div>
+
         </div>
-        
-        <div class="flex space-x-4">
-            <a
-                href="author1.html"
-                aria-label="Author 1 Profile"
-                class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white flex items-center justify-center"
-                title="Author Profile" 
-            >
-                <i class="fas fa-user text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform w-6 h-6 flex items-center justify-center"></i>
-            </a>
-            <a
-                href="author2.html"
-                aria-label="Author 2 Profile"
-                class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white flex items-center justify-center"
-                title="Author Profile" 
-            >
-                <i class="fas fa-user text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform w-6 h-6 flex items-center justify-center"></i>
-            </a>
-        </div>
-    </div>
     <div class="w-full flex justify-center mb-6 sm:mb-12 px-4 text-center">
         <div class="flex flex-col sm:flex-row items-center sm:space-x-6">
             <img src="FolkRavenLogo.webp" alt="FolkRaven Logo" class="h-32 sm:h-40 lg:h-48 drop-shadow-md animate-bounce-slight" />
-            <div>
+            <div class="folkraven-title-container">
                 <h1 class="text-7xl sm:text-8xl lg:text-9xl text-yellow-800 drop-shadow-lg font-bold">
-                    FolkRaven
+                    FolkRaven Books
                 </h1>
                 <p class="text-2xl sm:text-3xl text-yellow-900 mt-2 font-semibold drop-shadow-sm">
-                    Children's Educational & Activity Book Makers
+                    Children's Educational Story & Activity Books
                 </p>
-            </div>
+                </div>
         </div>
     </div>
     <div class="w-full max-w-6xl px-4 mt-6 text-center">
@@ -157,14 +157,31 @@
       <div class="bg-white/90 backdrop-blur-sm shadow-2xl border-2 border-yellow-600/30 hover:border-yellow-600/50 transition-all duration-300 p-8 lg:p-12 rounded-xl">
         <div class="text-center space-y-6">
           <h2 class="font-christmas text-4xl lg:text-5xl text-yellow-800 mb-6 drop-shadow-lg">
-            About Super Skye and the Rainbow Unicorns
+            About this book
           </h2>
-          <div class="prose max-w-none">
-            <p class="text-xl lg:text-2xl text-gray-800 leading-relaxed font-poppins">
-              Soar through the skies with Super Skye and her magical rainbow unicorns! This vibrant story encourages imagination, friendship, and embracing your unique abilities.
+          <div class="prose max-w-none text-left">
+            <p class="text-xl lg:text-2xl text-gray-800 leading-relaxed font-poppins text-center">
+              🦄 Super Skye and the Rainbow Unicorns<br>
+              A Sparkly, Superhero Adventure Full of Magic, Missions & Rainbows!
             </p>
             <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mt-4 font-poppins">
-              Full of sparkling adventures and colorful characters, 'Super Skye' will inspire young dreamers to believe in themselves and the power of kindness.
+              Get ready for an action-packed adventure with Super Skye—a fearless little girl with a superhero cape, a big imagination, and a team of magical unicorns by her side!
+            </p>
+            <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mt-4 font-poppins">
+              When the rainbow unicorns lose their special gems, the skies go grey—and it’s up to Super Skye to save the day. With every gem she finds, the unicorns get closer to creating their beautiful rainbow once again!
+            </p>
+            <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mt-4 font-poppins">
+              Perfect for preschoolers and early readers, this joyful story combines exciting storytelling with a gentle introduction to positional language like under, behind, next to, and in front of—all wrapped up in glitter, giggles, and superhero energy.
+            </p>
+            <h3 class="font-christmas text-3xl lg:text-4xl text-yellow-800 mt-8 mb-4 drop-shadow-md text-center">🌈 Why Kids Love Super Skye and the Rainbow Unicorns:</h3>
+            <ul class="list-disc list-inside text-lg lg:text-xl text-gray-700 leading-relaxed font-poppins space-y-2">
+              <li>🦸‍♀️ Empowering Heroine – A brave little girl with big ideas and a big heart.</li>
+              <li>🦄 Unicorn Magic & Rainbows – Full of sparkle, wonder, and imagination.</li>
+              <li>🧠 Educational Fun – Introduces positional words in a playful, meaningful way.</li>
+              <li>🎨 Vibrant, Colorful Pages – A visual treat that keeps children engaged from start to finish.</li>
+            </ul>
+            <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mt-4 font-poppins">
+              So grab your cape, call your unicorns, and join Super Skye on a magical rainbow rescue mission!
             </p>
           </div>
           <div class="flex justify-center space-x-2 mt-8">
@@ -175,7 +192,55 @@
         </div>
       </div>
     </section>
+
+    <footer class="w-full bg-gradient-to-r from-gray-100 to-gray-50 border-t-2 border-yellow-600/20 mt-16">
+        <div class="max-w-6xl mx-auto px-4 py-8">
+            <div class="text-center space-y-4">
+                <div class="flex justify-center items-center space-x-4 mb-6">
+                    <div class="h-px bg-yellow-600/30 flex-1"></div>
+                    <div class="font-christmas text-2xl text-yellow-800">FolkRaven Books</div>
+                    <div class="h-px bg-yellow-600/30 flex-1"></div>
+                </div>
+
+                <p class="text-gray-800 font-medium font-poppins">
+                    © 2020 FolkRaven Books. All rights reserved.
+                </p>
+
+                <p class="text-gray-700 text-sm max-w-2xl mx-auto leading-relaxed font-poppins">
+                    The educational content provided on this website and in our books is for informational purposes only.
+                </p>
+
+                <div class="pt-4">
+                    <a
+                        href="legal.html"
+                        class="text-yellow-700 hover:text-yellow-800 underline transition-colors duration-200 font-medium font-poppins"
+                    >
+                        Legal Information
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
+        // START: Header button visibility on scroll functionality (Copied from index.html)
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('.header-social-container');
+
+            function toggleButtonVisibility() {
+                if (window.scrollY > 0) {
+                    header.classList.add('hide-buttons'); // Add class to hide buttons
+                } else {
+                    header.classList.remove('hide-buttons'); // Remove class to show buttons
+                }
+            }
+
+            window.addEventListener('scroll', toggleButtonVisibility);
+            toggleButtonVisibility(); // Call it once on load to set initial state
+        });
+        // END: Header Button Visibility
+
+        // Existing book page navigation script
         let currentPage = 1; // Start with the cover image as page 1
         // >>> IMPORTANT: Adjust 'totalPages' based on your actual images for Book 3 <<<
         const totalPages = 5; // Example: book3.webp, book3-page1.webp, book3-page2.webp, book3-page3.webp, book3-page4.webp
@@ -223,37 +288,8 @@
             updatePage();
         }
 
-        // Initialize on page load
+        // Initialize on page load (ensure this runs after the header script)
         document.addEventListener('DOMContentLoaded', updatePage);
     </script>
-
-    <footer class="w-full bg-gradient-to-r from-gray-100 to-gray-50 border-t-2 border-yellow-600/20 mt-16">
-        <div class="max-w-6xl mx-auto px-4 py-8">
-            <div class="text-center space-y-4">
-                <div class="flex justify-center items-center space-x-4 mb-6">
-                    <div class="h-px bg-yellow-600/30 flex-1"></div>
-                    <div class="font-christmas text-2xl text-yellow-800">FolkRaven</div>
-                    <div class="h-px bg-yellow-600/30 flex-1"></div>
-                </div>
-                
-                <p class="text-gray-800 font-medium font-poppins">
-                    © 2020 FolkRaven Books. All rights reserved.
-                </p>
-                
-                <p class="text-gray-700 text-sm max-w-2xl mx-auto leading-relaxed font-poppins">
-                    The educational content provided on this website and in our books is for informational purposes only.
-                </p>
-                
-                <div class="pt-4">
-                    <a 
-                        href="legal.html" 
-                        class="text-yellow-700 hover:text-yellow-800 underline transition-colors duration-200 font-medium font-poppins"
-                    >
-                        Legal Information
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>

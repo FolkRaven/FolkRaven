@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>FolkRaven</title>
+    <title>FolkRaven Books</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&display=swap" rel="stylesheet">
@@ -11,13 +11,13 @@
     <style>
         body {
             font-family: 'Mountains of Christmas', cursive;
-            padding-top: 120px; /* Adjust this value if your header height changes */
+            padding-top: 80px; /* Keep this to push content below the fixed header */
         }
         .background-overlay::before {
             content: "";
             position: absolute;
             inset: 0;
-            background: url('FolkRaven.webp') center/cover no-repeat;
+            background: url('FolkRaven.webp') center/cover no-repeat; /* Note: image name remains FolkRaven.webp unless you want to change the file name itself */
             opacity: 0.5;
             z-index: -1;
         }
@@ -27,6 +27,8 @@
         .font-christmas {
             font-family: 'Mountains of Christmas', cursive;
         }
+        /* The .coming-soon:hover rule is now only applied to book6,
+           so book5 will get its regular hover effects. */
         .coming-soon:hover {
             transform: none !important;
             box-shadow: none !important;
@@ -71,31 +73,78 @@
         .folkraven-title-container {
             position: relative;
             display: inline-block;
-            width: fit-content; 
+            width: fit-content;
         }
 
         .raven-flying {
             position: absolute;
-            width: 200px;
+            width: 200px; /* Default width for larger screens */
             height: auto;
             top: -100px;
-            right: -50px; 
-            transform: translateX(10%); 
-            z-index: 10; 
-            pointer-events: none; 
+            right: -100px;
+            transform: translateX(10%);
+            z-index: 10;
+            pointer-events: none;
         }
+
+        /* Adjust raven position for small screens (e.g., max-width of 639px for phones) */
+        @media (max-width: 639px) { /* This targets screens smaller than Tailwind's 'sm' breakpoint */
+            .raven-flying {
+                top: -140px; /* Move it higher above the title */
+                right: 15%; /* Adjust from center to better fit, test this value */
+                transform: translateX(50%); /* Keeps it centered relative to 'right: 15%' */
+                width: 150px; /* Make it a bit smaller for mobile */
+            }
+        }
+
+        /* Adjust raven position for tablet screens (e.g., between 640px and 1023px, Tailwind's 'sm' to 'lg') */
+        @media (min-width: 640px) and (max-width: 1023px) {
+            .raven-flying {
+                top: -80px; /* Adjust vertical position for tablets */
+                right: -60px; /* Adjust horizontal position for tablets */
+                width: 180px; /* Slightly smaller than desktop, but larger than mobile */
+                transform: translateX(0%); /* Reset transform if needed, or fine-tune */
+            }
+        }
+
         /* --- END SIMPLIFIED CSS --- */
 
-        /* Specific styling for the new header container */
+        /* Specific styling for the header container */
         .header-social-container {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 50;
-            background-color: rgba(255, 255, 255, 0.5); /* Current opacity */
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* The container itself is ALWAYS transparent and has no shadow/blur */
+            background-color: transparent;
+            backdrop-filter: none;
+            box-shadow: none;
+        }
+
+        /* Styles for the social buttons (.group elements) */
+        .header-social-container .group {
+            background-color: rgba(255, 255, 255, 0.8); /* Default visible background */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Default visible shadow */
+            opacity: 1; /* Default visible opacity */
+            visibility: visible; /* Default visible state */
+            pointer-events: auto; /* Default interactive state */
+            /* Add transition for smooth hide/show */
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
+                                 background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        /* Class to hide the buttons when scrolled down */
+        .header-social-container.hide-buttons .group {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none; /* Disable clicks when hidden */
+        }
+
+        /* Ensure icon color transition is smooth */
+        .header-social-container .group svg,
+        .header-social-container .group i {
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
 
     </style>
@@ -106,9 +155,9 @@
         <div class="flex space-x-4">
             <a
                 href="mailto:info@folkraven.com"
-                aria-label="Email FolkRaven"
-                class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white"
-                title="Email Us" 
+                aria-label="Email FolkRaven Books"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
+                title="Email Us"
             >
                 <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -117,28 +166,46 @@
             <a
                 href="https://www.facebook.com/people/FolkRaven-Books/61573725687516/?mibextid=wwXIfr&rdid=IZCPSfctv60sBKGX&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NaUynKsG3%2F%3Fmibextid%3DwwXIfr"
                 target="_blank"
-                aria-label="Visit FolkRaven on Facebook"
-                class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white"
-                title="Visit Our Facebook Page" 
+                aria-label="Visit FolkRaven Books on Facebook"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
+                title="Visit Our Facebook Page"
             >
                 <i class="fab fa-facebook-f w-6 h-6 text-blue-600 group-hover:text-blue-700 group-hover:scale-110 transition-transform flex items-center justify-center"></i>
             </a>
+            <a
+                href="https://www.tiktok.com/@folkraven.books"
+                target="_blank"
+                aria-label="Visit FolkRaven Books on TikTok"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
+                title="Visit Our TikTok Page"
+            >
+                <i class="fab fa-tiktok w-6 h-6 text-black group-hover:text-gray-800 group-hover:scale-110 transition-transform flex items-center justify-center"></i>
+            </a>
+            <a
+                href="https://www.instagram.com/folkraven_books"
+                target="_blank"
+                aria-label="Visit FolkRaven Books on Instagram"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
+                title="Visit Our Instagram Page"
+            >
+                <i class="fab fa-instagram w-6 h-6 text-pink-600 group-hover:text-pink-700 group-hover:scale-110 transition-transform flex items-center justify-center"></i>
+            </a>
         </div>
-        
+
         <div class="flex space-x-4">
             <a
                 href="author1.html"
-                aria-label="Author 1 Profile"
-                class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white flex items-center justify-center"
-                title="Author Profile" 
+                aria-label="Ceri Smallpage Profile"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white flex items-center justify-center"
+                title="Author Profile: Ceri Smallpage"
             >
                 <i class="fas fa-user text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform w-6 h-6 flex items-center justify-center"></i>
             </a>
             <a
                 href="author2.html"
-                aria-label="Author 2 Profile"
-                class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white flex items-center justify-center"
-                title="Author Profile" 
+                aria-label="Catherine Brooks Profile"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white flex items-center justify-center"
+                title="Author Profile: Catherine Brooks"
             >
                 <i class="fas fa-user text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform w-6 h-6 flex items-center justify-center"></i>
             </a>
@@ -148,15 +215,15 @@
 
     <div class="w-full flex justify-center mb-6 sm:mb-12 px-4 text-center">
         <div class="flex flex-col sm:flex-row items-center sm:space-x-6">
-            <img src="FolkRavenLogo.webp" alt="FolkRaven Logo" class="h-32 sm:h-40 lg:h-48 drop-shadow-md animate-bounce-slight" />
-            <div class="folkraven-title-container"> 
+            <img src="FolkRavenLogo.webp" alt="FolkRaven Books Logo" class="h-32 sm:h-40 lg:h-48 drop-shadow-md animate-bounce-slight" />
+            <div class="folkraven-title-container">
                 <h1 class="text-7xl sm:text-8xl lg:text-9xl text-yellow-800 drop-shadow-lg font-bold">
-                    FolkRaven
+                    FolkRaven Books
                 </h1>
-                <img src="raven-flying.gif" alt="Animated Flying Raven" class="raven-flying" />
                 <p class="text-2xl sm:text-3xl text-yellow-900 mt-2 font-semibold drop-shadow-sm">
-                    Children's Educational & Activity Book Makers
+                    Children's Educational Story & Activity Books
                 </p>
+                <img src="raven-flying.gif" alt="Animated Flying Raven" class="raven-flying" />
             </div>
         </div>
     </div>
@@ -176,8 +243,8 @@
         <a href="book4.html" class="transform transition-transform hover:scale-105 hover:shadow-xl bg-white bg-opacity-80 border-4 border-yellow-800 rounded-xl h-[30rem] flex items-center justify-center cursor-pointer" title="Bug Fun Activity Book for Kids">
             <img src="book4.webp" alt="Bug Fun Activity Book For Kids" class="h-full w-full object-fill rounded-md"/>
         </a>
-        <a href="book5.html" class="transform transition-transform hover:scale-105 hover:shadow-xl bg-white bg-opacity-80 border-4 border-yellow-800 rounded-xl h-[30rem] flex items-center justify-center cursor-pointer coming-soon" title="More Books Coming Soon">
-            <img src="book5.webp" alt="More Books Coming Soon" class="h-full w-full object-fill rounded-md"/>
+        <a href="book5.html" class="transform transition-transform hover:scale-105 hover:shadow-xl bg-white bg-opacity-80 border-4 border-yellow-800 rounded-xl h-[30rem] flex items-center justify-center cursor-pointer" title="Tasty Treats: A Fun Money Activity Book for Kids">
+            <img src="book5.webp" alt="Tasty Treats: A Fun Money Activity Book for Kids" class="h-full w-full object-fill rounded-md"/>
         </a>
         <a href="book6.html" class="transform transition-transform hover:scale-105 hover:shadow-xl bg-white bg-opacity-80 border-4 border-yellow-800 rounded-xl h-[30rem] flex items-center justify-center cursor-pointer coming-soon" title="More Books Coming Soon">
             <img src="book6.webp" alt="More Books Coming Soon" class="h-full w-full object-fill rounded-md"/>
@@ -193,12 +260,10 @@
           </h2>
           <div class="prose max-w-none">
             <p class="text-xl lg:text-2xl text-gray-800 leading-relaxed font-poppins">
-              Combine a love of learning, drawing, and writing stories, and you have 
-              <span class="text-yellow-700 font-semibold">FolkRaven Books</span>!
+              <span class="text-yellow-700 font-semibold">FolkRaven Books</span> was founded by long-time friends <span class="text-yellow-700 font-semibold">Ceri Smallpage</span> and <span class="text-yellow-700 font-semibold">Catherine Brooks</span> during the 2020 lockdown.
             </p>
             <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mt-4 font-poppins">
-              Catherine and Ceri first started writing and illustrating stories together in 2020. 
-              After years of dreaming and drawing, they are proud to have brought FolkRaven to reality.
+              Inspired by a social-distanced walk around Mallards Pike, their shared passion for storytelling and illustration grew into a mission: to make learning fun and accessible for children, especially those who find traditional methods challenging. Our aim is to spark curiosity through creative, engaging educational resources.
             </p>
           </div>
           <div class="flex justify-center space-x-2 mt-8">
@@ -215,21 +280,21 @@
             <div class="text-center space-y-4">
                 <div class="flex justify-center items-center space-x-4 mb-6">
                     <div class="h-px bg-yellow-600/30 flex-1"></div>
-                    <div class="font-christmas text-2xl text-yellow-800">FolkRaven</div>
+                    <div class="font-christmas text-2xl text-yellow-800">FolkRaven Books</div>
                     <div class="h-px bg-yellow-600/30 flex-1"></div>
                 </div>
-                
+
                 <p class="text-gray-800 font-medium font-poppins">
                     © 2020 FolkRaven Books. All rights reserved.
                 </p>
-                
-                <p class="text-gray-700 text-sm max-w-2xl mx-auto leading-relaxed font-poppins">
+
+                <p class="text-700 text-sm max-w-2xl mx-auto leading-relaxed font-poppins">
                     The educational content provided on this website and in our books is for informational purposes only.
                 </p>
-                
+
                 <div class="pt-4">
-                    <a 
-                        href="legal.html" 
+                    <a
+                        href="legal.html"
                         class="text-yellow-700 hover:text-yellow-800 underline transition-colors duration-200 font-medium font-poppins"
                     >
                         Legal Information
@@ -241,16 +306,33 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+        // "Coming Soon" links functionality
         const comingSoonLinks = document.querySelectorAll('.coming-soon');
-
         comingSoonLinks.forEach(link => {
           link.addEventListener('click', function(event) {
             event.preventDefault(); // Prevent the default link behavior
             alert('More books are coming soon!'); // Optional: Provide feedback to the user
           });
-          // Optionally, change the cursor to indicate it's not clickable
-          link.style.cursor = 'default';
+          link.style.cursor = 'default'; // Optionally, change the cursor to indicate it's not clickable
         });
+
+        // Header button visibility on scroll functionality
+        const header = document.querySelector('.header-social-container');
+
+        // Function to check scroll position and toggle button visibility
+        function toggleButtonVisibility() {
+          if (window.scrollY > 0) {
+            header.classList.add('hide-buttons'); // Add class to hide buttons
+          } else {
+            header.classList.remove('hide-buttons'); // Remove class to show buttons
+          }
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', toggleButtonVisibility);
+
+        // Call it once on load to set initial state
+        toggleButtonVisibility();
       });
     </script>
 </body>

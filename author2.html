@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: 'Mountains of Christmas', cursive;
-            padding-top: 120px; /* Crucial for content to clear the fixed header */
+            padding-top: 80px; /* Adjusted for consistent header height */
         }
         .background-overlay::before {
             content: "";
@@ -28,17 +28,44 @@
             font-family: 'Mountains of Christmas', cursive;
         }
 
-        /* Specific styling for the fixed header container */
+        /* --- START: Header Button Visibility CSS (Copied from index.html) --- */
         .header-social-container {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 50;
-            background-color: rgba(255, 255, 255, 0.5); /* Current opacity */
-            backdrop-filter: blur(5px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* The container itself is ALWAYS transparent and has no shadow/blur */
+            background-color: transparent;
+            backdrop-filter: none;
+            box-shadow: none;
         }
+
+        /* Styles for the social buttons (.group elements) */
+        .header-social-container .group {
+            background-color: rgba(255, 255, 255, 0.8); /* Default visible background */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Default visible shadow */
+            opacity: 1; /* Default visible opacity */
+            visibility: visible; /* Default visible state */
+            pointer-events: auto; /* Default interactive state */
+            /* Add transition for smooth hide/show */
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
+                                 background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        /* Class to hide the buttons when scrolled down */
+        .header-social-container.hide-buttons .group {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none; /* Disable clicks when hidden */
+        }
+
+        /* Ensure icon color transition is smooth */
+        .header-social-container .group svg,
+        .header-social-container .group i {
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        /* --- END: Header Button Visibility CSS --- */
 
         .prose p + p {
             margin-top: 1em;
@@ -52,7 +79,7 @@
             <a
                 href="index.html"
                 aria-label="Back to Books"
-                class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
                 title="Back to Books"
             >
                 <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -61,9 +88,9 @@
             </a>
             <a
                 href="mailto:info@folkraven.com"
-                aria-label="Email FolkRaven"
-                class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white"
-                title="Email Us" 
+                aria-label="Email FolkRaven Books"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
+                title="Email Us"
             >
                 <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -72,28 +99,28 @@
             <a
                 href="https://www.facebook.com/people/FolkRaven-Books/61573725687516/?mibextid=wwXIfr&rdid=IZCPSfctv60sBKGX&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1NaUynKsG3%2F%3Fmibextid%3DwwXIfr"
                 target="_blank"
-                aria-label="Visit FolkRaven on Facebook"
-                class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white"
-                title="Visit Our Facebook Page" 
+                aria-label="Visit FolkRaven Books on Facebook"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
+                title="Visit Our Facebook Page"
             >
                 <i class="fab fa-facebook-f w-6 h-6 text-blue-600 group-hover:text-blue-700 group-hover:scale-110 transition-transform flex items-center justify-center"></i>
             </a>
         </div>
-        
+
         <div class="flex space-x-4">
             <a
                 href="author1.html"
                 aria-label="Author 1 Profile"
-                class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white flex items-center justify-center"
-                title="Author Profile" 
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white flex items-center justify-center"
+                title="Author Profile"
             >
                 <i class="fas fa-user text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform w-6 h-6 flex items-center justify-center"></i>
             </a>
             <a
                 href="author2.html"
                 aria-label="Author 2 Profile"
-                class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white flex items-center justify-center"
-                title="Author Profile" 
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white flex items-center justify-center"
+                title="Author Profile"
             >
                 <i class="fas fa-user text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform w-6 h-6 flex items-center justify-center"></i>
             </a>
@@ -101,11 +128,11 @@
     </div>
     <div class="w-full max-w-6xl mx-auto px-4 py-8">
         <div class="bg-white/90 backdrop-blur-sm shadow-2xl border-2 border-yellow-600/30 hover:border-yellow-600/50 transition-all duration-300 p-8 lg:p-12 rounded-xl flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-12">
-            
+
             <div class="flex-shrink-0 text-center">
                 <img src="author-placeholder.webp" alt="Author Profile Picture" class="w-48 h-48 rounded-full object-cover border-4 border-yellow-700 shadow-lg mx-auto md:mx-0"/>
                 <h2 class="font-christmas text-4xl lg:text-5xl text-yellow-800 mt-6 drop-shadow-lg">
-                    Author Name
+                    Catherine Brooks
                 </h2>
             </div>
 
@@ -115,15 +142,15 @@
                 </h3>
                 <div class="prose max-w-none">
                     <p class="text-lg lg:text-xl text-gray-800 leading-relaxed font-poppins">
-                        Welcome to my page! I'm passionate about creating engaging and educational content for children that sparks their imagination and love for learning. My goal is to craft stories and activities that are not only fun but also encourage critical thinking and creativity in young minds.
+                        Catherine Brooks is a writer and illustrator based in the Forest of Dean, England, where she lives with her husband, two daughters, and two much-loved rescue cats—Toffee and Pebbles. With a lifelong love of art and storytelling, Catherine began creating engaging, educational content during the COVID-19 lockdown to support her children’s learning at home.
                     </p>
                     <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mt-4 font-poppins">
-                        When I'm not writing, you can find me exploring nature, reading fantastical tales, or experimenting with new art techniques. I believe every child has a unique spark, and I strive to illuminate that through my work. Thank you for visiting!
+                        Her creative journey took a new turn when she teamed up with long-time friend Ceri Smallpage, and together they began developing books designed to make learning fun and accessible for all children. Catherine also previously ran a mum-and-toddler group, where she explored playful ways to support early childhood development.
                     </p>
                     <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mt-4 font-poppins">
-                        Feel free to reach out via email for collaborations or just to say hello!
+                        Her work is rooted in the belief that learning should be joyful, imaginative, and inclusive.
                     </p>
-                </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -133,21 +160,21 @@
             <div class="text-center space-y-4">
                 <div class="flex justify-center items-center space-x-4 mb-6">
                     <div class="h-px bg-yellow-600/30 flex-1"></div>
-                    <div class="font-christmas text-2xl text-yellow-800">FolkRaven</div>
+                    <div class="font-christmas text-2xl text-yellow-800">FolkRaven Books</div>
                     <div class="h-px bg-yellow-600/30 flex-1"></div>
                 </div>
-                
+
                 <p class="text-gray-800 font-medium font-poppins">
                     © 2020 FolkRaven Books. All rights reserved.
                 </p>
-                
+
                 <p class="text-gray-700 text-sm max-w-2xl mx-auto leading-relaxed font-poppins">
                     The educational content provided on this website and in our books is for informational purposes only.
                 </p>
-                
+
                 <div class="pt-4">
-                    <a 
-                        href="legal.html" 
+                    <a
+                        href="legal.html"
                         class="text-yellow-700 hover:text-yellow-800 underline transition-colors duration-200 font-medium font-poppins"
                     >
                         Legal Information
@@ -156,5 +183,24 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // START: Header button visibility on scroll functionality (Copied from index.html)
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('.header-social-container');
+
+            function toggleButtonVisibility() {
+                if (window.scrollY > 0) {
+                    header.classList.add('hide-buttons'); // Add class to hide buttons
+                } else {
+                    header.classList.remove('hide-buttons'); // Remove class to show buttons
+                }
+            }
+
+            window.addEventListener('scroll', toggleButtonVisibility);
+            toggleButtonVisibility(); // Call it once on load to set initial state
+        });
+        // END: Header Button Visibility
+    </script>
 </body>
 </html>

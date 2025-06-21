@@ -11,6 +11,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif; /* Default to Poppins for readability */
+            padding-top: 80px; /* Adjusted for consistent header height */
         }
         .background-overlay::before {
             content: "";
@@ -23,6 +24,9 @@
         .font-poppins { /* Explicitly apply Poppins where needed, though it's default */
             font-family: 'Poppins', sans-serif;
         }
+        .font-christmas { /* Added for consistent header title if you decide to use it */
+            font-family: 'Mountains of Christmas', cursive;
+        }
 
         /* Consistent prose styling for paragraphs, similar to other pages */
         .prose p + p {
@@ -31,24 +35,79 @@
         .prose strong {
             font-weight: 600; /* Ensuring strong tags are prominent within prose */
         }
+
+        /* --- START: Header Button Visibility CSS (Copied from index.html) --- */
+        .header-social-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            /* The container itself is ALWAYS transparent and has no shadow/blur */
+            background-color: transparent;
+            backdrop-filter: none;
+            box-shadow: none;
+        }
+
+        /* Styles for the social buttons (.group elements) */
+        .header-social-container .group {
+            background-color: rgba(255, 255, 255, 0.8); /* Default visible background */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Default visible shadow */
+            opacity: 1; /* Default visible opacity */
+            visibility: visible; /* Default visible state */
+            pointer-events: auto; /* Default interactive state */
+            /* Add transition for smooth hide/show */
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
+                        background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        /* Class to hide the buttons when scrolled down */
+        .header-social-container.hide-buttons .group {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none; /* Disable clicks when hidden */
+        }
+
+        /* Ensure icon color transition is smooth */
+        .header-social-container .group svg,
+        .header-social-container .group i {
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        /* --- END: Header Button Visibility CSS --- */
     </style>
 </head>
-<body class="relative background-overlay min-h-screen flex flex-col items-center justify-start py-12 bg-green-100">
+<body class="relative background-overlay min-h-screen flex flex-col items-center justify-start bg-green-100">
 
-    <div class="absolute top-6 left-6 z-10">
-        <a href="index.html" 
-           aria-label="Back to Home"
-           class="group bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white flex items-center justify-center">
-            <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-        </a>
+    <div class="header-social-container flex justify-between items-center w-full px-4 py-3">
+        <div class="flex space-x-4">
+            <a
+                href="index.html"
+                aria-label="Back to Home"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
+                title="Back to Home"
+            >
+                <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+            </a>
+            <a
+                href="mailto:info@folkraven.com"
+                aria-label="Email FolkRaven Books"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
+                title="Email Us"
+            >
+                <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+            </a>
+        </div>
+        <div></div>
     </div>
 
     <div class="w-full max-w-4xl px-4 mt-8 mb-12">
         <div class="bg-white/90 backdrop-blur-sm shadow-2xl border-2 border-yellow-600/30 hover:border-yellow-600/50 transition-all duration-300 p-8 lg:p-12 rounded-xl text-left">
-            
-            <h1 class="font-poppins text-4xl lg:text-5xl text-yellow-800 mb-8 text-center font-bold drop-shadow-lg">
+
+            <h1 class="font-christmas text-4xl lg:text-5xl text-yellow-800 mb-8 text-center font-bold drop-shadow-lg">
                 Legal Information
             </h1>
 
@@ -103,7 +162,7 @@
 
                 <p>
                     <strong>4. Cookies</strong><br>
-                    Our website uses cookies to enhance your Browse experience. You can control cookies through your browser settings.
+                    Our website uses cookies to enhance your browse experience. You can control cookies through your browser settings.
                 </p>
 
                 <p>
@@ -124,5 +183,21 @@
         </div>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('.header-social-container');
+
+            function toggleButtonVisibility() {
+                if (window.scrollY > 0) {
+                    header.classList.add('hide-buttons');
+                } else {
+                    header.classList.remove('hide-buttons');
+                }
+            }
+
+            window.addEventListener('scroll', toggleButtonVisibility);
+            toggleButtonVisibility();
+        });
+    </script>
 </body>
 </html>

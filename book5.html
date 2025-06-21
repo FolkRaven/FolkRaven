@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Book 2 - FolkRaven</title>
+    <title>Book 5 - FolkRaven</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: 'Mountains of Christmas', cursive;
-            padding-top: 80px; /* Adjusted to 80px for consistency with index.html header height */
+            padding-top: 80px; /* Adjusted for consistent header height */
         }
         .background-overlay::before {
             content: "";
@@ -94,6 +94,24 @@
             transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
         /* --- END: Header Button Visibility CSS --- */
+
+        /* CSS FOR ASPECT RATIO CONTAINER (already present and correct) */
+        .portrait-aspect-ratio {
+            position: relative;
+            width: 100%;
+            padding-bottom: 133.33%; /* Creates a 3:4 aspect ratio (Height / Width = 4/3 = 1.3333) */
+            overflow: hidden;
+        }
+        /* Image inside the aspect ratio container (already present and correct) */
+        .portrait-aspect-ratio img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* This will fill the container, cropping if aspect ratios don't match exactly. */
+            border-radius: 0.375rem;
+        }
     </style>
 </head>
 <body class="relative background-overlay min-h-screen flex flex-col items-center justify-start bg-green-100">
@@ -136,9 +154,13 @@
                 </div>
         </div>
     </div>
+
     <div class="w-full max-w-6xl px-4 mt-6 text-center">
-        <div class="relative inline-block border-4 border-yellow-800 rounded-xl shadow-lg">
-            <img id="page-display" src="book2.webp" alt="Book Page 1" class="h-64 sm:h-96 w-auto mx-auto object-fill rounded-md"/>
+        <div class="relative inline-block border-4 border-yellow-800 rounded-xl shadow-lg w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl mx-auto">
+            <div class="portrait-aspect-ratio">
+                <img id="page-display" src="book5.webp" alt="Tasty Treats: A Fun Money Activity Book Cover"/>
+            </div>
+
             <button onclick="prevPage()" class="group absolute left-4 bottom-4 p-3 bg-white/70 hover:bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-200">
                 <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -161,28 +183,29 @@
           </h2>
           <div class="prose max-w-none text-left">
             <p class="text-xl lg:text-2xl text-gray-800 leading-relaxed font-poppins text-center">
-              🩺 Doctor Penny<br>
-              A Heartwarming Tale of Make-Believe, Cuddles, and Cups of Tea
+              💰 Tasty Treats: A Fun Money Activity Book for Kids<br>
+              Learn about money with delicious activities!
             </p>
             <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mt-4 font-poppins">
-              Step into the world of Doctor Penny, where kindness, imagination, and a touch of pretend medicine come together in the coziest way.
+              Introduce your child to the exciting world of money and basic financial literacy with "Tasty Treats." This engaging activity book makes learning about currency, counting, and saving an enjoyable adventure, all while exploring delicious snacks!
             </p>
             <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mt-4 font-poppins">
-              When her cuddly patients need a helping hand, little Penny knows just what to do.
+              Through fun, hands-on activities, children will learn to recognize different coins and bills, practice counting money, and understand simple concepts like saving and spending. Each page is filled with delightful illustrations of treats, making learning a sweet experience!
             </p>
             <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mt-4 font-poppins">
-              This delightful rhyming story celebrates the magic of pretend play, the comfort of caring, and the joy of slowing down for a well-deserved rest.
+              Whether at home or on the go, "Tasty Treats" is designed to build confidence in young learners, preparing them for essential life skills in a playful and interactive way.
             </p>
-            <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mt-4 font-poppins">
-              Whether it's a pretend bandage or a warm cuddle, Doctor Penny reminds us all that sometimes, a little imagination and a nice cup of tea make everything better.
-            </p>
-            <h3 class="font-christmas text-3xl lg:text-4xl text-yellow-800 mt-8 mb-4 drop-shadow-md text-center">☕ Why Families Love Doctor Penny:</h3>
+            <h3 class="font-christmas text-3xl lg:text-4xl text-yellow-800 mt-8 mb-4 drop-shadow-md text-center">🍪 What’s Inside:</h3>
             <ul class="list-disc list-inside text-lg lg:text-xl text-gray-700 leading-relaxed font-poppins space-y-2">
-              <li>✨ Encourages Imaginative Play – A relatable story for any child who’s played “doctor” with their toys.</li>
-              <li>💕 Themes of Care & Empathy – Gentle lessons in kindness and looking after others.</li>
-              <li>🎶 Rhythmic, Repetitive Text – Perfect for reading aloud and easy for children to join in.</li>
-              <li>🌙 A Calming Bedtime Wind-Down – Ends with a cozy moment between Penny and her mum, making it an ideal story for winding down at the end of the day.</li>
+              <li>💲 Coin and Bill Recognition – Identify different denominations and their values.</li>
+              <li>➕ Counting Money Activities – Practice adding up coins and bills to buy treats.</li>
+              <li>🖍️ Coloring and Matching – Engaging activities to reinforce learning.</li>
+              <li>🧠 Problem-Solving Scenarios – Simple exercises to understand spending and saving.</li>
+              <li>😋 Delicious Illustrations – Fun images of snacks and desserts to keep kids engaged.</li>
             </ul>
+            <p class="text-lg lg:text-xl text-gray-700 leading-relaxed mt-4 font-poppins">
+              Perfect for children aged 4-8, "Tasty Treats" is an ideal resource for parents and educators looking to teach foundational money skills in an imaginative and effective way.
+            </p>
           </div>
           <div class="flex justify-center space-x-2 mt-8">
             <div class="w-3 h-3 bg-yellow-600 rounded-full animate-pulse"></div>
@@ -240,19 +263,19 @@
         });
         // END: Header Button Visibility
 
-        // Existing book page navigation script
-        let currentPage = 1; // Start with the cover image as page 1
-        const totalPages = 5; // Adjust this number based on your actual pages (e.g., 4 interior pages + 1 cover = 5)
+        // Book page navigation script
+        let currentPage = 1;
+        // >>> IMPORTANT: Adjust 'totalPages' based on your actual images for Book 5 <<<
+        const totalPages = 5; // Example: book5.webp, book5-page1.webp, book5-page2.webp, book5-page3.webp, book5-page4.webp
 
         function updatePage() {
             const pageDisplay = document.getElementById('page-display');
             let imgSource;
 
             if (currentPage === 1) {
-                imgSource = "book2.webp"; // Cover image
+                imgSource = "book5.webp"; // Show cover as page 1
             } else {
-                // Interior pages are book2-page1.webp, book2-page2.webp, etc.
-                imgSource = `book2-page${currentPage - 1}.webp`;
+                imgSource = `book5-page${currentPage - 1}.webp`;
             }
 
             const img = new Image();
@@ -260,21 +283,25 @@
                 pageDisplay.src = imgSource;
             };
             img.onerror = function() {
-                // If the next page doesn't exist, loop back to the start (or end)
+                // If an image doesn't load, cycle back or forward as appropriate
+                // This typically means the image file for that page doesn't exist
                 if (currentPage > totalPages) {
-                    currentPage = 1; // Loop back to cover
+                    currentPage = 1; // Loop back to the start if next page is beyond total
                 } else if (currentPage < 1) {
-                    currentPage = totalPages; // Loop back to last page if going backwards from cover
+                    currentPage = totalPages; // Loop to the end if previous page is before start
                 }
-                updatePage(); // Try to load again with adjusted page number
+                // Attempt to update again with the corrected page number
+                // This might lead to an infinite loop if totalPages is wrong and images are truly missing
+                console.error(`Error loading image: ${imgSource}. Adjusting page number.`);
+                updatePage(); // Re-run updatePage with corrected currentPage
             };
-            img.src = imgSource; // Start loading the image
+            img.src = imgSource;
         }
 
         function nextPage() {
             currentPage++;
             if (currentPage > totalPages) {
-                currentPage = 1; // Loop back to the first page (cover)
+                currentPage = 1; // Loops back to the cover after the last page
             }
             updatePage();
         }
@@ -282,12 +309,11 @@
         function prevPage() {
             currentPage--;
             if (currentPage < 1) {
-                currentPage = totalPages; // Loop back to the last page
+                currentPage = totalPages; // Loops to the last page from the cover
             }
             updatePage();
         }
 
-        // Initialize on page load (ensure this runs after the header script)
         document.addEventListener('DOMContentLoaded', updatePage);
     </script>
 </body>
