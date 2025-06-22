@@ -17,7 +17,7 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: url('FolkRaven.webp') center/cover no-repeat; /* Note: image name remains FolkRaven.webp unless you want to change the file name itself */
+            background: url('FolkRaven.webp') center/cover no-repeat;
             opacity: 0.5;
             z-index: -1;
         }
@@ -69,44 +69,71 @@
             animation-delay: 0.150s;
         }
 
-        /* --- SIMPLIFIED CSS for the Raven GIF positioning --- */
+       /* --- SIMPLIFIED CSS for the Raven GIF positioning --- */
         .folkraven-title-container {
             position: relative;
             display: inline-block;
             width: fit-content;
         }
 
+        /* Default styles for raven-flying (Full screen / Large Desktops - 1175px and up) */
         .raven-flying {
             position: absolute;
-            width: 200px; /* Default width for larger screens */
+            width: 200px;
             height: auto;
             top: -100px;
             right: -100px;
             transform: translateX(10%);
             z-index: 10;
             pointer-events: none;
+            transition: all 0.3s ease-in-out; /* Add transition for smoother changes */
         }
 
-        /* Adjust raven position for small screens (e.g., max-width of 639px for phones) */
-        @media (max-width: 639px) { /* This targets screens smaller than Tailwind's 'sm' breakpoint */
+        @media (min-width: 1175px) and (max-width: 2000px) { /* Changed from 1174px to 1175px to avoid overlap */
             .raven-flying {
-                top: -140px; /* Move it higher above the title */
-                right: 15%; /* Adjust from center to better fit, test this value */
-                transform: translateX(50%); /* Keeps it centered relative to 'right: 15%' */
-                width: 150px; /* Make it a bit smaller for mobile */
+                width: 190px; /* Adjust size as needed */
+                top: -100px; /* Adjust vertical position */
+                right: -105px; /* Adjust horizontal position */
+                transform: translateX(8%); /* Fine-tune for this range */
             }
         }
 
-        /* Adjust raven position for tablet screens (e.g., between 640px and 1023px, Tailwind's 'sm' to 'lg') */
-        @media (min-width: 640px) and (max-width: 1023px) {
+        @media (min-width: 1024px) and (max-width: 1174px) {
             .raven-flying {
-                top: -80px; /* Adjust vertical position for tablets */
-                right: -60px; /* Adjust horizontal position for tablets */
-                width: 180px; /* Slightly smaller than desktop, but larger than mobile */
-                transform: translateX(0%); /* Reset transform if needed, or fine-tune */
+                width: 190px; /* Adjust size as needed */
+                top: -110px; /* Adjust vertical position */
+                right: 240px; /* Adjust horizontal position */
+                transform: translateX(8%); /* Fine-tune for this range */
             }
         }
 
+        @media (min-width: 753px) and (max-width: 1023px) {
+            .raven-flying {
+                width: 190px; /* Adjust size as needed */
+                top: -100px; /* Adjust vertical position */
+                right: 150px; /* Adjust horizontal position */
+                transform: translateX(8%); /* Fine-tune for this range */
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 752px) {
+            .raven-flying {
+                width: 190px; /* Adjust size as needed */
+                top: 35px; /* Adjust vertical position */
+                right: 5px; /* Adjust horizontal position */
+                transform: translateX(8%); /* Fine-tune for this range */
+            }
+        }
+
+        @media (max-width: 640px) {
+            .raven-flying {
+                width: 190px; /* Smaller for mobile */
+                top: -170px; /* Adjust vertical position */
+                right: 5px; /* Adjust horizontal position */
+                transform: translateX(15%);
+            }
+        }
+        
         /* --- END SIMPLIFIED CSS --- */
 
         /* Specific styling for the header container */
@@ -131,7 +158,7 @@
             pointer-events: auto; /* Default interactive state */
             /* Add transition for smooth hide/show */
             transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
-                                background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+                                 background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
         /* Class to hide the buttons when scrolled down */
@@ -152,14 +179,15 @@
 <body class="relative background-overlay min-h-screen flex flex-col items-center justify-start bg-green-100">
 
     <div class="header-social-container flex justify-between items-center w-full px-4 py-3">
-        <div class="flex space-x-2"> <a
+        <div class="flex space-x-2">
+            <a
                 href="mailto:info@folkraven.com"
                 aria-label="Email FolkRaven Books"
                 class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
                 title="Email Us"
             >
-                <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                 </svg>
             </a>
             <a
@@ -191,7 +219,8 @@
             </a>
         </div>
 
-        <div class="flex space-x-2"> <a
+        <div class="flex space-x-2">
+            <a
                 href="author1.html"
                 aria-label="Ceri Smallpage Profile"
                 class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white flex items-center justify-center"
@@ -331,6 +360,24 @@
 
         // Call it once on load to set initial state
         toggleButtonVisibility();
+
+        /* Commented out: Debug Print for Viewport Size
+        const viewportSizeDisplay = document.getElementById('viewport-size-display');
+
+        function updateViewportSize() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            if (viewportSizeDisplay) {
+                viewportSizeDisplay.textContent = `Viewport: ${width}px x ${height}px`;
+            }
+        }
+
+        // Update on load
+        updateViewportSize();
+
+        // Update on resize
+        window.addEventListener('resize', updateViewportSize);
+        End Commented out Debug Print */
       });
     </script>
 </body>
