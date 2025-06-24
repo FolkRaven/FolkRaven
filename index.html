@@ -158,7 +158,7 @@
             pointer-events: auto; /* Default interactive state */
             /* Add transition for smooth hide/show */
             transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
-                                 background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+                                background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
         /* Class to hide the buttons when scrolled down */
@@ -279,6 +279,8 @@
 
     </div>
 
+    <p class="mt-4 text-gray-700 font-poppins">Select a book to view the details.</p>
+
     <section class="w-full max-w-6xl mx-auto px-4 mt-16 mb-12">
       <div class="bg-white/90 backdrop-blur-sm shadow-2xl border-2 border-yellow-600/30 hover:border-yellow-600/50 transition-all duration-300 p-8 lg:p-12 rounded-xl">
         <div class="text-center space-y-6">
@@ -332,53 +334,53 @@
     </footer>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // "Coming Soon" links functionality
-        const comingSoonLinks = document.querySelectorAll('.coming-soon');
-        comingSoonLinks.forEach(link => {
-          link.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent the default link behavior
-            alert('More books are coming soon!'); // Optional: Provide feedback to the user
-          });
-          link.style.cursor = 'default'; // Optionally, change the cursor to indicate it's not clickable
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+            // "Coming Soon" links functionality
+            const comingSoonLinks = document.querySelectorAll('.coming-soon');
+            comingSoonLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent the default link behavior
+                    alert('More books are coming soon!'); // Optional: Provide feedback to the user
+                });
+                link.style.cursor = 'default'; // Optionally, change the cursor to indicate it's not clickable
+            });
 
-        // Header button visibility on scroll functionality
-        const header = document.querySelector('.header-social-container');
+            // Header button visibility on scroll functionality
+            const header = document.querySelector('.header-social-container');
 
-        // Function to check scroll position and toggle button visibility
-        function toggleButtonVisibility() {
-          if (window.scrollY > 0) {
-            header.classList.add('hide-buttons'); // Add class to hide buttons
-          } else {
-            header.classList.remove('hide-buttons'); // Remove class to show buttons
-          }
-        }
-
-        // Add scroll event listener
-        window.addEventListener('scroll', toggleButtonVisibility);
-
-        // Call it once on load to set initial state
-        toggleButtonVisibility();
-
-        /* Commented out: Debug Print for Viewport Size
-        const viewportSizeDisplay = document.getElementById('viewport-size-display');
-
-        function updateViewportSize() {
-            const width = window.innerWidth;
-            const height = window.innerHeight;
-            if (viewportSizeDisplay) {
-                viewportSizeDisplay.textContent = `Viewport: ${width}px x ${height}px`;
+            // Function to check scroll position and toggle button visibility
+            function toggleButtonVisibility() {
+                if (window.scrollY > 0) {
+                    header.classList.add('hide-buttons'); // Add class to hide buttons
+                } else {
+                    header.classList.remove('hide-buttons'); // Remove class to show buttons
+                }
             }
-        }
 
-        // Update on load
-        updateViewportSize();
+            // Add scroll event listener
+            window.addEventListener('scroll', toggleButtonVisibility);
 
-        // Update on resize
-        window.addEventListener('resize', updateViewportSize);
-        End Commented out Debug Print */
-      });
+            // Call it once on load to set initial state
+            toggleButtonVisibility();
+
+            /* Commented out: Debug Print for Viewport Size
+            const viewportSizeDisplay = document.getElementById('viewport-size-display');
+
+            function updateViewportSize() {
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+                if (viewportSizeDisplay) {
+                    viewportSizeDisplay.textContent = `Viewport: ${width}px x ${height}px`;
+                }
+            }
+
+            // Update on load
+            updateViewportSize();
+
+            // Update on resize
+            window.addEventListener('resize', updateViewportSize);
+            End Commented out Debug Print */
+        });
     </script>
 </body>
 </html>

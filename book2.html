@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
-            font-family: 'Mountains of Christmas', cursive;
+            /* FIX: Set Poppins as the default font for the entire body */
+            font-family: 'Poppins', sans-serif;
             padding-top: 80px; /* Adjusted to 80px for consistency with index.html header height */
         }
         .background-overlay::before {
@@ -21,6 +22,8 @@
             opacity: 0.5;
             z-index: -1;
         }
+        /* Keep these, although `font-poppins` on elements is now more explicit than necessary
+            since `body` is Poppins, but it doesn't hurt. */
         .text-block, .font-poppins {
             font-family: 'Poppins', sans-serif;
         }
@@ -56,7 +59,7 @@
             margin-top: 1em;
         }
 
-        /* --- START: Header Button Visibility CSS (Copied from index.html) --- */
+        /* START: Header Button Visibility CSS (Copied from index.html) */
         .header-social-container {
             position: fixed;
             top: 0;
@@ -78,7 +81,7 @@
             pointer-events: auto; /* Default interactive state */
             /* Add transition for smooth hide/show */
             transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
-                        background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+                                background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
         /* Class to hide the buttons when scrolled down */
@@ -93,43 +96,46 @@
         .header-social-container .group i {
             transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
-        /* --- END: Header Button Visibility --- */
+        /* END: Header Button Visibility */
     </style>
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=BAAT9XEE9Pl1vfmbOrOTXSXoZO4j6da0ql8V_pla7VzxY_vnoMzLUZEZfhMJT9rmiDQbeUGcXVCzcsKrr8&components=hosted-buttons&disable-funding=venmo&currency=GBP">
+    </script>
 </head>
 <body class="relative background-overlay min-h-screen flex flex-col items-center justify-start bg-green-100">
 
     <div class="header-social-container flex justify-between items-center w-full px-4 py-3">
         <div class="flex space-x-2"> <a
-                    href="index.html"
-                    aria-label="Back to Books"
-                    class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
-                    title="Back to Books"
-                >
-                    <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                </a>
-                <a
-                    href="mailto:info@folkraven.com"
-                    aria-label="Email FolkRaven Books"
-                    class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
-                    title="Email Us"
-                >
-                    <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                </a>
-                </div>
+                href="index.html"
+                aria-label="Back to Books"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
+                title="Back to Books"
+            >
+                <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+            </a>
+            <a
+                href="mailto:info@folkraven.com"
+                aria-label="Email FolkRaven Books"
+                class="group p-3 rounded-full hover:shadow-xl transition-all duration-300 hover:bg-white"
+                title="Email Us"
+            >
+                <svg class="w-6 h-6 text-gray-700 group-hover:text-gray-900 group-hover:scale-110 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+            </a>
+            </div>
 
         </div>
     <div class="w-full flex justify-center mb-6 sm:mb-12 px-4 text-center">
         <div class="flex flex-col sm:flex-row items-center sm:space-x-6">
             <img src="FolkRavenLogo.webp" alt="FolkRaven Logo" class="h-32 sm:h-40 lg:h-48 drop-shadow-md animate-bounce-slight" />
             <div class="folkraven-title-container">
-                <h1 class="text-7xl sm:text-8xl lg:text-9xl text-yellow-800 drop-shadow-lg font-bold">
+                <h1 class="text-7xl sm:text-8xl lg:text-9xl text-yellow-800 drop-shadow-lg font-bold font-christmas">
                     FolkRaven Books
                 </h1>
-                <p class="text-2xl sm:text-3xl text-yellow-900 mt-2 font-semibold drop-shadow-sm">
+                <p class="text-2xl sm:text-3xl text-yellow-900 mt-2 font-semibold drop-shadow-sm font-poppins">
                     Children's Educational Story & Activity Books
                 </p>
                 </div>
@@ -152,7 +158,7 @@
         <p class="mt-4 text-gray-700 font-poppins">Use the buttons to flip through sample pages of the book.</p>
     </div>
 
-    <section class="w-full max-w-6xl mx-auto px-4 mt-16 mb-12">
+    <section class="w-full max-w-6xl mx-auto px-4 mt-16 mb-8">
       <div class="bg-white/90 backdrop-blur-sm shadow-2xl border-2 border-yellow-600/30 hover:border-yellow-600/50 transition-all duration-300 p-8 lg:p-12 rounded-xl">
         <div class="text-center space-y-6">
           <h2 class="font-christmas text-4xl lg:text-5xl text-yellow-800 mb-6 drop-shadow-lg">
@@ -191,6 +197,22 @@
         </div>
       </div>
     </section>
+
+<section class="w-full max-w-6xl mx-auto px-4 mb-12">
+    <div class="bg-white/90 backdrop-blur-sm shadow-lg border-2 border-yellow-600/30 p-6 rounded-xl text-center w-full max-w-md mx-auto">
+        <h3 class="font-christmas text-3xl lg:text-4xl text-yellow-800 mb-6 drop-shadow-md">
+            Get Your Copy Now!
+        </h3>
+        <div class="flex justify-center">
+            <div id="paypal-container-WWUXUV732E2GW" class="w-full max-w-md min-h-[400px]">></div>
+        </div>
+        <script>
+            paypal.HostedButtons({
+                hostedButtonId: "WWUXUV732E2GW",
+            }).render("#paypal-container-WWUXUV732E2GW")
+        </script>
+    </div>
+</section>
 
     <footer class="w-full bg-gradient-to-r from-gray-100 to-gray-50 border-t-2 border-yellow-600/20 mt-16">
         <div class="max-w-6xl mx-auto px-4 py-8">
